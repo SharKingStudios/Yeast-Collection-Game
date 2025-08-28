@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=4 uid="uid://dwke8guur55ix"]
+[gd_scene load_steps=15 format=4 uid="uid://dwke8guur55ix"]
 
 [ext_resource type="Texture2D" uid="uid://lb4cnw5qxim4" path="res://bread.png" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://obj7kjyyoyny" path="res://scripts/game_controller.gd" id="1_efxa6"]
 [ext_resource type="Script" uid="uid://clqdycb3o2i83" path="res://player.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://dbk8cw5qv1yap" path="res://breadtile.png" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dc14ccwdbna7n" path="res://collectables/scenes/yeast_ui.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://laucrtwgivys" path="res://ui/scenes/health_ui.tscn" id="5_7mycd"]
 [ext_resource type="PackedScene" uid="uid://emowaqsoxuvq" path="res://collectables/scenes/yeast.tscn" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://xlyc0hkb4lom" path="res://pause.gd" id="6_4c57u"]
+[ext_resource type="FontFile" uid="uid://c8mbt4i4ly8r4" path="res://fot-yuruka-std.ttf" id="6_kek77"]
 [ext_resource type="PackedScene" uid="uid://c1rcd75miggng" path="res://enemies/scenes/cheese_enemy.tscn" id="7_272bh"]
 [ext_resource type="Script" uid="uid://bnqrsimb322rx" path="res://fall_area.gd" id="8_5vw27"]
 
@@ -986,7 +988,9 @@ sources/0 = SubResource("TileSetAtlasSource_lquwl")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kek77"]
 distance = -3571.0
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node" node_paths=PackedStringArray("hearts")]
+script = ExtResource("1_efxa6")
+hearts = [NodePath("UI/HealthUI/Health/Bread"), NodePath("UI/HealthUI/Health/Bread2"), NodePath("UI/HealthUI/Health/Bread3")]
 
 [node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_h2yge")
@@ -1012,7 +1016,120 @@ tile_set = SubResource("TileSet_7mycd")
 
 [node name="YeastUI" parent="UI" instance=ExtResource("4_1bvp3")]
 
-[node name="HealthUI" parent="UI" instance=ExtResource("5_7mycd")]
+[node name="Pause" type="Node" parent="UI"]
+script = ExtResource("6_4c57u")
+
+[node name="PausePanel" type="Panel" parent="UI/Pause"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="UI/Pause/PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.5
+offset_top = -207.0
+offset_right = 237.5
+offset_bottom = -146.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("6_kek77")
+theme_override_font_sizes/font_size = 60
+text = "Game Paused"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Pause/PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.0
+offset_top = -146.0
+offset_right = 145.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="UI/Pause/PausePanel/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_kek77")
+theme_override_font_sizes/font_size = 36
+text = "Resume"
+flat = true
+
+[node name="MainMenuButton" type="Button" parent="UI/Pause/PausePanel/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_kek77")
+theme_override_font_sizes/font_size = 36
+text = "Main Menu"
+flat = true
+
+[node name="HealthUI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="Health" type="Panel" parent="UI/HealthUI"]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+offset_left = -346.0
+offset_top = 22.0
+offset_right = 2.0
+offset_bottom = 129.0
+
+[node name="Bread" type="TextureRect" parent="UI/HealthUI/Health"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 24.0
+offset_right = 107.0
+offset_bottom = 98.0
+texture = ExtResource("1_0xm2m")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Bread2" type="TextureRect" parent="UI/HealthUI/Health"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 23.0
+offset_right = 211.0
+offset_bottom = 97.0
+texture = ExtResource("1_0xm2m")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Bread3" type="TextureRect" parent="UI/HealthUI/Health"]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 21.0
+offset_right = 321.0
+offset_bottom = 95.0
+texture = ExtResource("1_0xm2m")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="Yeast" parent="." instance=ExtResource("5_lquwl")]
 position = Vector2(-2874, 1481)
@@ -1032,4 +1149,6 @@ shape = SubResource("WorldBoundaryShape2D_kek77")
 [node name="CheeseEnemy2" parent="." instance=ExtResource("7_272bh")]
 position = Vector2(2175, 902)
 
+[connection signal="pressed" from="UI/Pause/PausePanel/VBoxContainer/ResumeButton" to="UI/Pause" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="UI/Pause/PausePanel/VBoxContainer/MainMenuButton" to="UI/Pause" method="_on_main_menu_button_pressed"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

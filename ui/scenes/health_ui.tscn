@@ -32,6 +32,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="Bread2" type="TextureRect" parent="Health"]
+layout_mode = 0
 offset_left = 118.0
 offset_top = 23.0
 offset_right = 211.0
@@ -41,6 +42,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="Bread3" type="TextureRect" parent="Health"]
+layout_mode = 0
 offset_left = 228.0
 offset_top = 21.0
 offset_right = 321.0
