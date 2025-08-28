@@ -10,9 +10,14 @@ config_version=5
 
 [application]
 
-config/name="SpireBash Godot"
+config/name="Yeast Collection Game"
 run/main_scene="uid://dwke8guur55ix"
 config/features=PackedStringArray("4.4", "Mobile")
+
+[autoload]
+
+EventController="*res://scripts/event_controller.gd"
+GameController="*res://scripts/game_controller.gd"
 
 [editor_plugins]
 

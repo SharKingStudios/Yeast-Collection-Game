@@ -1,4 +1,12 @@
 res://main.tscn
-res://actors/Player.tscn
-res://actors/player.gd
+res://scripts/event_controller.gd
+res://scripts/game_controller.gd
+res://collectables/scenes/yeast.tscn
+res://collectables/scripts/yeast.gd
 res://player.gd
+res://collectables/scenes/yeast_ui.tscn
+res://collectables/scripts/yeast_ui.gd
+res://ui/scenes/health_ui.tscn
+res://enemies/scenes/cheese_enemy.tscn
+res://fall_area.gd
+res://enemies/scripts/collision_shape_2d.gd

@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://laucrtwgivys"]
+
+[ext_resource type="Texture2D" uid="uid://lb4cnw5qxim4" path="res://bread.png" id="1_5dila"]
+
+[node name="HealthUI" type="Control"]
+layout_direction = 2
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Health" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+layout_mode = 0
+offset_left = -346.0
+offset_top = 22.0
+offset_right = 2.0
+offset_bottom = 129.0
+
+[node name="Bread" type="TextureRect" parent="Health"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 24.0
+offset_right = 107.0
+offset_bottom = 98.0
+texture = ExtResource("1_5dila")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Bread2" type="TextureRect" parent="Health"]
+offset_left = 118.0
+offset_top = 23.0
+offset_right = 211.0
+offset_bottom = 97.0
+texture = ExtResource("1_5dila")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Bread3" type="TextureRect" parent="Health"]
+offset_left = 228.0
+offset_top = 21.0
+offset_right = 321.0
+offset_bottom = 95.0
+texture = ExtResource("1_5dila")
+expand_mode = 1
+stretch_mode = 4

@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player
 
 const SPEED = 1500.0
 const JUMP_VELOCITY = -3000.0
@@ -20,6 +20,10 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, 12)
-
+		velocity.x = move_toward(velocity.x, 0, 120)
+		
 	move_and_slide()
+
+
+func jump():
+	velocity.y = JUMP_VELOCITY / 2
