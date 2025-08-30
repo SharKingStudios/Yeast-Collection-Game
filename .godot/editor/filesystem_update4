@@ -1,7 +1,6 @@
 res://main.tscn
+res://enemies/scripts/collision_shape_2d.gd
 res://collectables/scenes/yeast_ui.tscn
 res://ui/scenes/health_ui.tscn
 res://enemies/scenes/cheese_enemy.tscn
-res://pause.gd
 res://scripts/game_controller.gd
-res://enemies/scripts/collision_shape_2d.gd
