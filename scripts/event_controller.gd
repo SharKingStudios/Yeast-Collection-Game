@@ -3,6 +3,7 @@ extends Node
 signal level_completed
 
 signal yeast_collected(value: int)
+signal health_update(value: int)
 
 
 
