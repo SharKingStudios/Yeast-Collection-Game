@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1rcd75miggng"]
+
+[ext_resource type="Script" uid="uid://c6se4iqad450j" path="res://enemies/scripts/cheese_enemy_movement.gd" id="1_5ykyu"]
+[ext_resource type="Texture2D" uid="uid://83xbkm25w0dk" path="res://cheese.png" id="1_p3w1n"]
+[ext_resource type="Script" uid="uid://cpkfjoeam0wkc" path="res://enemies/scripts/cheese_enemy.gd" id="2_1rs3i"]
+[ext_resource type="Texture2D" uid="uid://brkil2a3m3h7t" path="res://shrededcheese.png" id="3_d7jvh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3w1n"]
+size = Vector2(359, 350)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7jvh"]
+size = Vector2(383, 357)
+
+[sub_resource type="Curve" id="Curve_5ykyu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.867052, 0.865169), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="CheeseEnemy" type="CharacterBody2D"]
+script = ExtResource("1_5ykyu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 4)
+shape = SubResource("RectangleShape2D_p3w1n")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3.5, 1.5)
+shape = SubResource("RectangleShape2D_d7jvh")
+script = ExtResource("2_1rs3i")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D/CollisionShape2D"]
+position = Vector2(4.5, -3.5)
+scale = Vector2(0.400833, 0.400833)
+texture = ExtResource("1_p3w1n")
+
+[node name="CheeseExplosion" type="CPUParticles2D" parent="Area2D/CollisionShape2D"]
+z_index = -1
+emitting = false
+amount = 45
+texture = ExtResource("3_d7jvh")
+one_shot = true
+explosiveness = 1.0
+emission_shape = 2
+emission_sphere_radius = 115.0
+direction = Vector2(0, -1)
+spread = 150.0
+initial_velocity_max = 2000.0
+angular_velocity_min = -250.0
+angular_velocity_max = 250.0
+scale_amount_min = 0.1
+scale_amount_max = 0.15
+scale_amount_curve = SubResource("Curve_5ykyu")
+
+[node name="WallProbe" type="RayCast2D" parent="."]
+position = Vector2(180, 0)
+target_position = Vector2(90, 0)
+
+[node name="LedgeProbe" type="RayCast2D" parent="."]
+position = Vector2(180, 175)
+scale = Vector2(1, 1)
+skew = -0.785398
+
+[connection signal="body_entered" from="Area2D" to="Area2D/CollisionShape2D" method="_on_area_2d_body_entered"]

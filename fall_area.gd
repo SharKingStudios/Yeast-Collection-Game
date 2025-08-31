@@ -13,4 +13,6 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
+		GameController.lives = 3
+		GameController.total_yeast = 0
 		get_tree().reload_current_scene()

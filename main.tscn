@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=4 uid="uid://dwke8guur55ix"]
+[gd_scene load_steps=20 format=4 uid="uid://dwke8guur55ix"]
 
 [ext_resource type="Texture2D" uid="uid://lb4cnw5qxim4" path="res://bread.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://obj7kjyyoyny" path="res://scripts/game_controller.gd" id="1_efxa6"]
 [ext_resource type="Script" uid="uid://clqdycb3o2i83" path="res://player.gd" id="1_h2yge"]
+[ext_resource type="AudioStream" uid="uid://ntgvf0nor4fh" path="res://sounds/songs/gameplayMusic-_8_Bit_Retro_Funk_-_www.FesliyanStudios.com_David_Renda.mp3" id="2_dg77c"]
 [ext_resource type="Texture2D" uid="uid://dbk8cw5qv1yap" path="res://breadtile.png" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dc14ccwdbna7n" path="res://collectables/scenes/yeast_ui.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://emowaqsoxuvq" path="res://collectables/scenes/yeast.tscn" id="5_lquwl"]
@@ -11,11 +12,20 @@
 [ext_resource type="PackedScene" uid="uid://c1rcd75miggng" path="res://enemies/scenes/cheese_enemy.tscn" id="7_272bh"]
 [ext_resource type="Script" uid="uid://bnqrsimb322rx" path="res://fall_area.gd" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://3x1g1xiapp8x" path="res://breadhealth.gd" id="8_efxa6"]
+[ext_resource type="Script" uid="uid://bghaddibpt6f1" path="res://addons/crt/crt.gd" id="10_ycdy4"]
+
+[sub_resource type="Curve" id="Curve_dg77c"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.83815, 0.775281), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_efxa6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.780347, 0.88764), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(327, 215)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lquwl"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_efxa6"]
 texture = ExtResource("2_h2yge")
 texture_region_size = Vector2i(500, 500)
 0:0/0 = 0
@@ -984,7 +994,7 @@ texture_region_size = Vector2i(500, 500)
 [sub_resource type="TileSet" id="TileSet_7mycd"]
 tile_size = Vector2i(500, 500)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_lquwl")
+sources/0 = SubResource("TileSetAtlasSource_efxa6")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kek77"]
 distance = -3571.0
@@ -992,8 +1002,49 @@ distance = -3571.0
 [node name="Node" type="Node"]
 script = ExtResource("1_efxa6")
 
+[node name="Background Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dg77c")
+volume_db = -6.0
+autoplay = true
+parameters/looping = true
+
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(-1185, 1922)
 script = ExtResource("1_h2yge")
+slide_time = 1.0
+slide_friction = 1.0
+
+[node name="SlideParticles" type="CPUParticles2D" parent="Player"]
+emitting = false
+amount = 20
+texture = ExtResource("1_0xm2m")
+explosiveness = 0.05
+emission_shape = 1
+emission_sphere_radius = 50.0
+direction = Vector2(0, -1)
+initial_velocity_min = 500.0
+initial_velocity_max = 1000.0
+angular_velocity_min = -500.0
+angular_velocity_max = 500.0
+scale_amount_min = 0.02
+scale_amount_max = 0.05
+scale_amount_curve = SubResource("Curve_dg77c")
+
+[node name="JumpParticles" type="CPUParticles2D" parent="Player"]
+emitting = false
+amount = 15
+texture = ExtResource("1_0xm2m")
+explosiveness = 0.8
+emission_shape = 2
+emission_sphere_radius = 25.0
+direction = Vector2(0, 1)
+spread = 90.0
+initial_velocity_max = 1000.0
+angular_velocity_min = -250.0
+angular_velocity_max = 250.0
+scale_amount_min = 0.02
+scale_amount_max = 0.05
+scale_amount_curve = SubResource("Curve_efxa6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 position = Vector2(-3, -3)
@@ -1009,12 +1060,64 @@ zoom = Vector2(0.25, 0.25)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(402.604, 2090.29)
-tile_map_data = PackedByteArray("AAD8/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAD3/wAAAAAAAAAAAAD4/wEAAAAAAAAAAAD5/wEAAAAAAAAAAAD6/wEAAAAAAAAAAAD7/wEAAAAAAAAAAAD8/wEAAAAAAAAAAAD9/wIAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAD//wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD8/wQAAAAAAAAAAAD7/wQAAAAAAAAAAAD6/wQAAAAAAAAAAAD5/wQAAAAAAAAAAAD4/wQAAAAAAAAAAAD3/wQAAAAAAAAAAAD3/wMAAAAAAAAAAAD3/wIAAAAAAAAAAAD3/wEAAAAAAAAAAAD3////AAAAAAAAAAD4/wAAAAAAAAAAAAD5/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD7/wAAAAAAAAAAAAD5/wIAAAAAAAAAAAD5/wMAAAAAAAAAAAD4/wIAAAAAAAAAAAD4/wMAAAAAAAAAAAD6/wMAAAAAAAAAAAD6/wIAAAAAAAAAAAD9/wMAAAAAAAAAAAD8/wMAAAAAAAAAAAD8/wIAAAAAAAAAAAD7/wIAAAAAAAAAAAD7/wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD3//7/AAAAAAAAAAD3//3/AAAAAAAAAAD3//z/AAAAAAAAAAD3//v/AAAAAAAAAAD3//r/AAAAAAAAAAD3//n/AAAAAAAAAAD2//n/AAAAAAAAAAD1//r/AAAAAAAAAAD0//r/AAAAAAAAAADz//r/AAAAAAAAAADy//r/AAAAAAAAAADx//r/AAAAAAAAAADx//n/AAAAAAAAAADw//n/AAAAAAAAAADy//n/AAAAAAAAAADz//n/AAAAAAAAAAD0//n/AAAAAAAAAAD1//n/AAAAAAAAAADw//r/AAAAAAAAAADx//v/AAAAAAAAAADx//z/AAAAAAAAAADw//z/AAAAAAAAAADw//3/AAAAAAAAAADw//7/AAAAAAAAAADx//7/AAAAAAAAAADx//3/AAAAAAAAAADw//v/AAAAAAAAAADw////AAAAAAAAAADw/wAAAAAAAAAAAADw/wEAAAAAAAAAAADw/wIAAAAAAAAAAADw/wMAAAAAAAAAAADx/wMAAAAAAAAAAADx/wIAAAAAAAAAAADx/wEAAAAAAAAAAADx/wAAAAAAAAAAAADx////AAAAAAAAAADy//7/AAAAAAAAAADy//3/AAAAAAAAAADy//z/AAAAAAAAAADy////AAAAAAAAAADy/wAAAAAAAAAAAADy/wEAAAAAAAAAAADy//v/AAAAAAAAAADz//v/AAAAAAAAAADz//z/AAAAAAAAAADz//3/AAAAAAAAAADz//7/AAAAAAAAAADz////AAAAAAAAAADz/wAAAAAAAAAAAAD0//v/AAAAAAAAAAD0//z/AAAAAAAAAAD1//3/AAAAAAAAAAD1//z/AAAAAAAAAAD1//v/AAAAAAAAAAD2//v/AAAAAAAAAAD2//r/AAAAAAAAAAD2//z/AAAAAAAAAAD2//3/AAAAAAAAAAD2//7/AAAAAAAAAAD2////AAAAAAAAAAD2/wAAAAAAAAAAAAD2/wEAAAAAAAAAAAD2/wIAAAAAAAAAAAD1/wMAAAAAAAAAAAD1/wIAAAAAAAAAAAD1/wEAAAAAAAAAAAD1/wAAAAAAAAAAAAD1////AAAAAAAAAAD1//7/AAAAAAAAAAD0//3/AAAAAAAAAAD0//7/AAAAAAAAAAD0////AAAAAAAAAAD0/wAAAAAAAAAAAAD0/wEAAAAAAAAAAAD0/wIAAAAAAAAAAAD0/wMAAAAAAAAAAADz/wEAAAAAAAAAAADy/wIAAAAAAAAAAADz/wIAAAAAAAAAAADz/wMAAAAAAAAAAADz/wQAAAAAAAAAAADy/wQAAAAAAAAAAADy/wMAAAAAAAAAAAD1/wQAAAAAAAAAAAD2/wQAAAAAAAAAAAD0/wQAAAAAAAAAAAD2/wMAAAAAAAAAAADx/wQAAAAAAAAAAADw/wQAAAAAAAAAAAACAP//AAAAAAAAAAACAP7/AAAAAAAAAAADAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAADAP//AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD8/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAD3/wAAAAAAAAAAAAD4/wEAAAAAAAAAAAD5/wEAAAAAAAAAAAD6/wEAAAAAAAAAAAD7/wEAAAAAAAAAAAD8/wEAAAAAAAAAAAD9/wIAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAD//wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD8/wQAAAAAAAAAAAD7/wQAAAAAAAAAAAD6/wQAAAAAAAAAAAD5/wQAAAAAAAAAAAD4/wQAAAAAAAAAAAD3/wQAAAAAAAAAAAD3/wMAAAAAAAAAAAD3/wIAAAAAAAAAAAD3/wEAAAAAAAAAAAD3////AAAAAAAAAAD4/wAAAAAAAAAAAAD5/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD7/wAAAAAAAAAAAAD5/wIAAAAAAAAAAAD5/wMAAAAAAAAAAAD4/wIAAAAAAAAAAAD4/wMAAAAAAAAAAAD6/wMAAAAAAAAAAAD6/wIAAAAAAAAAAAD9/wMAAAAAAAAAAAD8/wMAAAAAAAAAAAD8/wIAAAAAAAAAAAD7/wIAAAAAAAAAAAD7/wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD3//7/AAAAAAAAAAD3//3/AAAAAAAAAAD3//z/AAAAAAAAAAD3//v/AAAAAAAAAAD3//r/AAAAAAAAAAD3//n/AAAAAAAAAAD2//n/AAAAAAAAAAD1//r/AAAAAAAAAAD0//r/AAAAAAAAAADz//r/AAAAAAAAAADy//r/AAAAAAAAAADx//r/AAAAAAAAAADx//n/AAAAAAAAAADw//n/AAAAAAAAAADy//n/AAAAAAAAAADz//n/AAAAAAAAAAD0//n/AAAAAAAAAAD1//n/AAAAAAAAAADw//r/AAAAAAAAAADx//v/AAAAAAAAAADx//z/AAAAAAAAAADw//z/AAAAAAAAAADw//3/AAAAAAAAAADw//7/AAAAAAAAAADx//7/AAAAAAAAAADx//3/AAAAAAAAAADw//v/AAAAAAAAAADw////AAAAAAAAAADw/wAAAAAAAAAAAADw/wEAAAAAAAAAAADw/wIAAAAAAAAAAADw/wMAAAAAAAAAAADx/wMAAAAAAAAAAADx/wIAAAAAAAAAAADx/wEAAAAAAAAAAADx/wAAAAAAAAAAAADx////AAAAAAAAAADy//7/AAAAAAAAAADy//3/AAAAAAAAAADy//z/AAAAAAAAAADy////AAAAAAAAAADy/wAAAAAAAAAAAADy/wEAAAAAAAAAAADy//v/AAAAAAAAAADz//v/AAAAAAAAAADz//z/AAAAAAAAAADz//3/AAAAAAAAAADz//7/AAAAAAAAAADz////AAAAAAAAAADz/wAAAAAAAAAAAAD0//v/AAAAAAAAAAD0//z/AAAAAAAAAAD1//3/AAAAAAAAAAD1//z/AAAAAAAAAAD1//v/AAAAAAAAAAD2//v/AAAAAAAAAAD2//r/AAAAAAAAAAD2//z/AAAAAAAAAAD2//3/AAAAAAAAAAD2//7/AAAAAAAAAAD2////AAAAAAAAAAD2/wAAAAAAAAAAAAD2/wEAAAAAAAAAAAD2/wIAAAAAAAAAAAD1/wMAAAAAAAAAAAD1/wIAAAAAAAAAAAD1/wEAAAAAAAAAAAD1/wAAAAAAAAAAAAD1////AAAAAAAAAAD1//7/AAAAAAAAAAD0//3/AAAAAAAAAAD0//7/AAAAAAAAAAD0////AAAAAAAAAAD0/wAAAAAAAAAAAAD0/wEAAAAAAAAAAAD0/wIAAAAAAAAAAAD0/wMAAAAAAAAAAADz/wEAAAAAAAAAAADy/wIAAAAAAAAAAADz/wIAAAAAAAAAAADz/wMAAAAAAAAAAADz/wQAAAAAAAAAAADy/wQAAAAAAAAAAADy/wMAAAAAAAAAAAD1/wQAAAAAAAAAAAD2/wQAAAAAAAAAAAD0/wQAAAAAAAAAAAD2/wMAAAAAAAAAAADx/wQAAAAAAAAAAADw/wQAAAAAAAAAAAACAP//AAAAAAAAAAACAP7/AAAAAAAAAAADAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAADAP//AAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAAAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAAAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAANAAAAAAAAAAAAAAANAAEAAAAAAAAAAAANAAIAAAAAAAAAAAANAAMAAAAAAAAAAAANAAQAAAAAAAAAAAAOAAAAAAAAAAAAAAAOAAEAAAAAAAAAAAAOAAIAAAAAAAAAAAAOAAMAAAAAAAAAAAAOAAQAAAAAAAAAAAAPAAAAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAEAAAAAAAAAAAAQAAIAAAAAAAAAAAAQAAMAAAAAAAAAAAAQAAQAAAAAAAAAAAARAAAAAAAAAAAAAAARAAEAAAAAAAAAAAARAAIAAAAAAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAASAAAAAAAAAAAAAAASAAEAAAAAAAAAAAASAAIAAAAAAAAAAAASAAMAAAAAAAAAAAASAAQAAAAAAAAAAAATAAAAAAAAAAAAAAATAAEAAAAAAAAAAAATAAIAAAAAAAAAAAATAAMAAAAAAAAAAAATAAQAAAAAAAAAAAAUAAAAAAAAAAAAAAAUAAEAAAAAAAAAAAAUAAIAAAAAAAAAAAAUAAMAAAAAAAAAAAAUAAQAAAAAAAAAAAAVAAAAAAAAAAAAAAAVAAEAAAAAAAAAAAAVAAIAAAAAAAAAAAAVAAMAAAAAAAAAAAAVAAQAAAAAAAAAAAAWAAAAAAAAAAAAAAAWAAEAAAAAAAAAAAAWAAIAAAAAAAAAAAAWAAMAAAAAAAAAAAAWAAQAAAAAAAAAAAAXAAAAAAAAAAAAAAAXAAEAAAAAAAAAAAAXAAIAAAAAAAAAAAAXAAMAAAAAAAAAAAAXAAQAAAAAAAAAAAAYAAAAAAAAAAAAAAAYAAEAAAAAAAAAAAAYAAIAAAAAAAAAAAAYAAMAAAAAAAAAAAAYAAQAAAAAAAAAAAAZAAAAAAAAAAAAAAAZAAEAAAAAAAAAAAAZAAIAAAAAAAAAAAAZAAMAAAAAAAAAAAAZAAQAAAAAAAAAAAAaAAAAAAAAAAAAAAAaAAEAAAAAAAAAAAAaAAIAAAAAAAAAAAAaAAMAAAAAAAAAAAAaAAQAAAAAAAAAAAAJAPz/AAAAAAAAAAAJAP3/AAAAAAAAAAAJAP7/AAAAAAAAAAAJAP//AAAAAAAAAAAKAPz/AAAAAAAAAAAKAP3/AAAAAAAAAAAKAP7/AAAAAAAAAAAKAP//AAAAAAAAAAALAPz/AAAAAAAAAAALAP3/AAAAAAAAAAALAP7/AAAAAAAAAAALAP//AAAAAAAAAAAPAPr/AAAAAAAAAAAPAPv/AAAAAAAAAAAPAPz/AAAAAAAAAAAPAP3/AAAAAAAAAAAPAP7/AAAAAAAAAAAPAP//AAAAAAAAAAAQAPr/AAAAAAAAAAAQAPv/AAAAAAAAAAAQAPz/AAAAAAAAAAAQAP3/AAAAAAAAAAAQAP7/AAAAAAAAAAAQAP//AAAAAAAAAAARAPr/AAAAAAAAAAARAPv/AAAAAAAAAAARAPz/AAAAAAAAAAARAP3/AAAAAAAAAAARAP7/AAAAAAAAAAARAP//AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_7mycd")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="YeastUI" parent="UI" instance=ExtResource("4_1bvp3")]
+
+[node name="HealthUI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="Health" type="Panel" parent="UI/HealthUI"]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+layout_mode = 0
+offset_left = -346.0
+offset_top = 22.0
+offset_right = 2.0
+offset_bottom = 129.0
+script = ExtResource("8_efxa6")
+
+[node name="Bread" type="TextureRect" parent="UI/HealthUI/Health"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 14.0
+offset_top = 24.0
+offset_right = 107.0
+offset_bottom = 98.0
+texture = ExtResource("1_0xm2m")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Bread2" type="TextureRect" parent="UI/HealthUI/Health"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 23.0
+offset_right = 211.0
+offset_bottom = 97.0
+texture = ExtResource("1_0xm2m")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Bread3" type="TextureRect" parent="UI/HealthUI/Health"]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 21.0
+offset_right = 321.0
+offset_bottom = 95.0
+texture = ExtResource("1_0xm2m")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="Pause" type="Node" parent="UI"]
 script = ExtResource("6_4c57u")
@@ -1082,57 +1185,15 @@ theme_override_font_sizes/font_size = 36
 text = "Main Menu"
 flat = true
 
-[node name="HealthUI" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
-grow_horizontal = 0
-size_flags_horizontal = 8
-size_flags_vertical = 0
-
-[node name="Health" type="Panel" parent="UI/HealthUI"]
-self_modulate = Color(1, 1, 1, 0)
-texture_filter = 1
-layout_mode = 0
-offset_left = -346.0
-offset_top = 22.0
-offset_right = 2.0
-offset_bottom = 129.0
-script = ExtResource("8_efxa6")
-
-[node name="Bread" type="TextureRect" parent="UI/HealthUI/Health"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 14.0
-offset_top = 24.0
-offset_right = 107.0
-offset_bottom = 98.0
-texture = ExtResource("1_0xm2m")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="Bread2" type="TextureRect" parent="UI/HealthUI/Health"]
-layout_mode = 0
-offset_left = 118.0
-offset_top = 23.0
-offset_right = 211.0
-offset_bottom = 97.0
-texture = ExtResource("1_0xm2m")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="Bread3" type="TextureRect" parent="UI/HealthUI/Health"]
-layout_mode = 0
-offset_left = 228.0
-offset_top = 21.0
-offset_right = 321.0
-offset_bottom = 95.0
-texture = ExtResource("1_0xm2m")
-expand_mode = 1
-stretch_mode = 4
+[node name="CRT" type="CanvasLayer" parent="UI"]
+visible = false
+script = ExtResource("10_ycdy4")
+update_in_editor = false
+resolution = Vector2(420, 280)
+grille_amount = 0.0
+vignette_intensity = 0.35
+roll_line_amount = 0.2
+metadata/_custom_type_script = "uid://bghaddibpt6f1"
 
 [node name="Yeast" parent="." instance=ExtResource("5_lquwl")]
 position = Vector2(-2874, 1481)
@@ -1151,6 +1212,20 @@ shape = SubResource("WorldBoundaryShape2D_kek77")
 
 [node name="CheeseEnemy2" parent="." instance=ExtResource("7_272bh")]
 position = Vector2(2175, 902)
+
+[node name="CheeseEnemy3" parent="." instance=ExtResource("7_272bh")]
+position = Vector2(5794.18, -303.043)
+
+[node name="CheeseEnemy4" parent="." instance=ExtResource("7_272bh")]
+position = Vector2(8433.27, -1289.49)
+
+[node name="CheeseEnemy5" parent="." instance=ExtResource("7_272bh")]
+position = Vector2(7051.1, 1163.62)
+sprite_path = NodePath("../CheeseEnemy3/Area2D/CollisionShape2D/Sprite2D")
+
+[node name="CheeseEnemy6" parent="." instance=ExtResource("7_272bh")]
+position = Vector2(10948.3, 1521.17)
+sprite_path = NodePath("../CheeseEnemy3/Area2D/CollisionShape2D/Sprite2D")
 
 [connection signal="pressed" from="UI/Pause/PausePanel/VBoxContainer/ResumeButton" to="UI/Pause" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="UI/Pause/PausePanel/VBoxContainer/MainMenuButton" to="UI/Pause" method="_on_main_menu_button_pressed"]

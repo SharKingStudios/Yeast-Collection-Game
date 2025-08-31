@@ -11,17 +11,24 @@ config_version=5
 [application]
 
 config/name="Yeast Collection Game"
-run/main_scene="uid://dwke8guur55ix"
+config/version="1.0"
+run/main_scene="uid://c0hgbl7g335cs"
 config/features=PackedStringArray("4.4", "Mobile")
 
 [autoload]
 
 EventController="*res://scripts/event_controller.gd"
 GameController="*res://scripts/game_controller.gd"
+SoundController="*res://sound_controller.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+enabled=PackedStringArray("res://addons/crt/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg")
 
 [input]
 
@@ -48,6 +55,12 @@ pause={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+down={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194322,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
 
 [physics]
 
@@ -56,3 +69,4 @@ pause={
 [rendering]
 
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.641336, 0.418813, 0.155416, 1)
