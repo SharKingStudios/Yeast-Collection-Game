@@ -84,6 +84,7 @@ var _slide_dir: int = 1
 var _is_air_slam: bool = false
 
 func _ready() -> void:
+	emit_signal("slid_ended")
 	_update_fsm()
 	# ensure visuals are in a sane default state
 	if is_instance_valid(_jump_fx) and "emitting" in _jump_fx:

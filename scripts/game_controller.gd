@@ -11,10 +11,20 @@ func decrease_health():
 	update_health(1)
 	SoundController.play_player_hurt()
 	print(lives)
-	if lives == 0:
+	if lives < 1:
 		lives = 3
 		total_yeast = 0
 		get_tree().reload_current_scene()
+	if lives > 3:
+		lives = 3
+		
+func increase_health():
+	lives += 0.25
+	EventController.emit_signal("health_update", lives)
+	print("Emit health update signal")
+	print(lives)
+	if lives > 3:
+		lives = 3
 
 func yeast_collected(value: int):
 	total_yeast += value
