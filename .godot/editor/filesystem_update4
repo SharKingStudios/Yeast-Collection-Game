@@ -8,3 +8,4 @@ res://enemies/scenes/cheese_enemy.tscn
 res://fall_area.gd
 res://player.gd
 res://collectables/scripts/yeast.gd
+res://background_music.gd

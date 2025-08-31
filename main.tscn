@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=4 uid="uid://dwke8guur55ix"]
+[gd_scene load_steps=21 format=4 uid="uid://dwke8guur55ix"]
 
 [ext_resource type="Texture2D" uid="uid://lb4cnw5qxim4" path="res://bread.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://obj7kjyyoyny" path="res://scripts/game_controller.gd" id="1_efxa6"]
 [ext_resource type="Script" uid="uid://clqdycb3o2i83" path="res://player.gd" id="1_h2yge"]
 [ext_resource type="AudioStream" uid="uid://ntgvf0nor4fh" path="res://sounds/songs/gameplayMusic-_8_Bit_Retro_Funk_-_www.FesliyanStudios.com_David_Renda.mp3" id="2_dg77c"]
 [ext_resource type="Texture2D" uid="uid://dbk8cw5qv1yap" path="res://breadtile.png" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://bc5c0bajv2o2s" path="res://background_music.gd" id="3_w48qg"]
 [ext_resource type="PackedScene" uid="uid://dc14ccwdbna7n" path="res://collectables/scenes/yeast_ui.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://emowaqsoxuvq" path="res://collectables/scenes/yeast.tscn" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://xlyc0hkb4lom" path="res://pause.gd" id="6_4c57u"]
@@ -1007,6 +1008,7 @@ stream = ExtResource("2_dg77c")
 volume_db = -6.0
 autoplay = true
 parameters/looping = true
+script = ExtResource("3_w48qg")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(-2145, 1824)
@@ -1201,529 +1203,533 @@ script = ExtResource("8_5vw27")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("WorldBoundaryShape2D_kek77")
 
-[node name="Yeast" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast Collectables" type="Node" parent="."]
+
+[node name="Yeast" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(19264, -3665)
 
-[node name="Yeast2" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast2" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(20558, -3624)
 
-[node name="Yeast3" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast3" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(21853, -1603)
 
-[node name="Yeast4" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast4" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(23501, -1576)
 
-[node name="Yeast5" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast5" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(31076, -3128)
 
-[node name="Yeast6" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast6" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(29806, -3143)
 
-[node name="Yeast7" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast7" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(17351, -681)
 
-[node name="Yeast8" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast8" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(26855, -681)
 
-[node name="Yeast9" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast9" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(22665, 264)
 
-[node name="Yeast10" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast10" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(30145, -42)
 
-[node name="Yeast11" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast11" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(16402, 9197)
 
-[node name="Yeast12" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast12" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(15367, 21178)
 
-[node name="Yeast13" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast13" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(12935, 21261)
 
-[node name="Yeast14" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast14" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(10850, 20773)
 
-[node name="Yeast15" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast15" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(8943, 20833)
 
-[node name="Yeast16" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast16" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(6845, 20832)
 
-[node name="Yeast17" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast17" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(14378, 19009)
 
-[node name="Yeast18" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast18" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(12566, 18699)
 
-[node name="Yeast19" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast19" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(14127, 17364)
 
-[node name="Yeast20" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast20" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(13066, 16303)
 
-[node name="Yeast21" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast21" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(12208, 14718)
 
-[node name="Yeast22" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast22" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(13233, 12823)
 
-[node name="Yeast23" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast23" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(14509, 12811)
 
-[node name="Yeast24" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast24" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(6917, 18851)
 
-[node name="Yeast25" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast25" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(3604, 18828)
 
-[node name="Yeast26" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast26" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(1804, 20329)
 
-[node name="Yeast27" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast27" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(5690, 16391)
 
-[node name="Yeast28" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast28" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(6508, 16381)
 
-[node name="Yeast29" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast29" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(5355, 14303)
 
-[node name="Yeast30" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast30" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(1327, 14204)
 
-[node name="Yeast31" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast31" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(2361, 14204)
 
-[node name="Yeast32" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast32" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(9392, 17841)
 
-[node name="Yeast33" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast33" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(18608, 21269)
 
-[node name="Yeast34" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast34" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(22797, 18858)
 
-[node name="Yeast35" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast35" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(23475, 18858)
 
-[node name="Yeast36" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast36" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(27874, 18830)
 
-[node name="Yeast37" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast37" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(25191, 15873)
 
-[node name="Yeast38" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast38" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(26432, 15873)
 
-[node name="Yeast39" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast39" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(22797, 14748)
 
-[node name="Yeast40" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast40" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(29114, 12816)
 
-[node name="Yeast41" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast41" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(21399, 10220)
 
-[node name="Yeast42" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast42" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(26605, 10163)
 
-[node name="Yeast43" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast43" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(22422, 9312)
 
-[node name="Yeast44" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast44" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(26302, 7812)
 
-[node name="Yeast45" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast45" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(27311, 7812)
 
-[node name="Yeast46" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast46" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(31621, 9312)
 
-[node name="Yeast47" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast47" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(30429, 31230)
 
-[node name="Yeast48" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast48" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(26745, 30235)
 
-[node name="Yeast49" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast49" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(27523, 30255)
 
-[node name="Yeast50" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast50" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(23662, 28787)
 
-[node name="Yeast51" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast51" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(24500, 28787)
 
-[node name="Yeast52" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast52" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(20648, 26778)
 
-[node name="Yeast53" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast53" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(15497, 28285)
 
-[node name="Yeast54" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast54" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(17989, 27556)
 
-[node name="Yeast55" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast55" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(10286, 27290)
 
-[node name="Yeast56" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast56" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(11764, 26532)
 
-[node name="Yeast57" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast57" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(13438, 27310)
 
-[node name="Yeast58" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast58" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(6179, 27851)
 
-[node name="Yeast59" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast59" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(3214, 27792)
 
-[node name="Yeast60" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast60" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(4623, 28767)
 
-[node name="Yeast61" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast61" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-923, 30314)
 
-[node name="Yeast62" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast62" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-3188, 30265)
 
-[node name="Yeast63" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast63" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-4370, 28285)
 
-[node name="Yeast64" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast64" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-4370, 27054)
 
-[node name="Yeast65" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast65" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-4370, 25738)
 
-[node name="Yeast66" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast66" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-6453, 25852)
 
-[node name="Yeast67" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast67" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-4370, 23833)
 
-[node name="Yeast68" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast68" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-4419, 21232)
 
-[node name="Yeast69" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast69" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-6453, 23833)
 
-[node name="Yeast70" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast70" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-6458, 21261)
 
-[node name="Yeast71" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast71" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-6453, 19115)
 
-[node name="Yeast72" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast72" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-4429, 19132)
 
-[node name="Yeast73" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast73" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-6458, 17095)
 
-[node name="Yeast74" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast74" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-4370, 17095)
 
-[node name="Yeast75" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast75" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-4370, 15111)
 
-[node name="Yeast76" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast76" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-6458, 15111)
 
-[node name="Yeast77" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast77" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-6453, 13419)
 
-[node name="Yeast78" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast78" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-4370, 13296)
 
-[node name="Yeast79" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast79" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-6453, 11900)
 
-[node name="Yeast80" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast80" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-3098, 11220)
 
-[node name="Yeast81" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast81" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-2373, 10364)
 
-[node name="Yeast82" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast82" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-847, 9369)
 
-[node name="Yeast83" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast83" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-2856, 8079)
 
-[node name="Yeast84" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast84" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-5791, 7350)
 
-[node name="Yeast85" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast85" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-3565, 7370)
 
-[node name="Yeast86" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast86" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-788, 5400)
 
-[node name="Yeast87" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast87" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(128, 4888)
 
-[node name="Yeast88" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast88" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(1143, 5400)
 
-[node name="Yeast89" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast89" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(2926, 9222)
 
-[node name="Yeast90" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast90" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(4196, 6808)
 
-[node name="Yeast91" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast91" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(5575, 6779)
 
-[node name="Yeast92" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast92" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(6206, 9320)
 
-[node name="Yeast93" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast93" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(9860, 9300)
 
-[node name="Yeast94" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast94" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(8412, 5794)
 
-[node name="Yeast95" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast95" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(10096, 5794)
 
-[node name="Yeast96" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast96" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(9172, 5233)
 
-[node name="Yeast97" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast97" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(-11, 1699)
 
-[node name="Yeast98" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast98" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(4529, 1886)
 
-[node name="Yeast99" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast99" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(9543, -1197)
 
-[node name="Yeast100" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast100" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(12508, -2162)
 
-[node name="Yeast101" parent="." instance=ExtResource("5_lquwl")]
+[node name="Yeast101" parent="Yeast Collectables" instance=ExtResource("5_lquwl")]
 position = Vector2(14832, -2152)
 
-[node name="CheeseEnemy" parent="." instance=ExtResource("7_272bh")]
+[node name="Cheese Enemies" type="Node" parent="."]
+
+[node name="CheeseEnemy" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(2076, 815)
 
-[node name="CheeseEnemy2" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy2" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(3799, 1541)
 
-[node name="CheeseEnemy3" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy3" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(5575, -312)
 
-[node name="CheeseEnemy4" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy4" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(7396, 187)
 
-[node name="CheeseEnemy5" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy5" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(8743, -1515)
 
-[node name="CheeseEnemy6" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy6" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(13514, -2529)
 
-[node name="CheeseEnemy7" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy7" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(18392, -924)
 
-[node name="CheeseEnemy8" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy8" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(19785, -3838)
 
-[node name="CheeseEnemy9" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy9" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(22699, -2043)
 
-[node name="CheeseEnemy10" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy10" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(27576, -861)
 
-[node name="CheeseEnemy11" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy11" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(30511, -3415)
 
-[node name="CheeseEnemy12" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy12" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(31081, -396)
 
-[node name="CheeseEnemy13" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy13" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(21369, 195)
 
-[node name="CheeseEnemy14" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy14" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(9291, 5600)
 
-[node name="CheeseEnemy15" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy15" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(7201, 8218)
 
-[node name="CheeseEnemy16" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy16" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(4963, 6656)
 
-[node name="CheeseEnemy17" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy17" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(487, 5199)
 
-[node name="CheeseEnemy18" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy18" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(2451, 8809)
 
-[node name="CheeseEnemy19" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy19" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(973, 8092)
 
-[node name="CheeseEnemy20" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy20" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(-4918, 7247)
 
-[node name="CheeseEnemy21" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy21" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(-5720, 11597)
 
-[node name="CheeseEnemy22" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy22" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(-3905, 12526)
 
-[node name="CheeseEnemy23" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy23" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(-5889, 15228)
 
-[node name="CheeseEnemy24" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy24" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(-3989, 17107)
 
-[node name="CheeseEnemy25" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy25" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(-6375, 18839)
 
-[node name="CheeseEnemy26" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy26" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(-3841, 20802)
 
-[node name="CheeseEnemy27" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy27" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(-4081, 23652)
 
-[node name="CheeseEnemy28" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy28" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(-5974, 25447)
 
-[node name="CheeseEnemy29" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy29" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(-3947, 28023)
 
-[node name="CheeseEnemy30" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy30" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(-2173, 29881)
 
-[node name="CheeseEnemy31" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy31" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(1353, 28509)
 
-[node name="CheeseEnemy32" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy32" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(846, 31169)
 
-[node name="CheeseEnemy33" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy33" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(3675, 27854)
 
-[node name="CheeseEnemy34" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy34" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(4796, 28382)
 
-[node name="CheeseEnemy35" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy35" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(6526, 27664)
 
-[node name="CheeseEnemy36" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy36" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(7645, 28234)
 
-[node name="CheeseEnemy37" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy37" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(11166, 27054)
 
-[node name="CheeseEnemy38" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy38" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(16449, 27875)
 
-[node name="CheeseEnemy39" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy39" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(20820, 26566)
 
-[node name="CheeseEnemy40" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy40" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(24050, 28530)
 
-[node name="CheeseEnemy41" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy41" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(18983, 31275)
 
-[node name="CheeseEnemy42" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy42" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(22192, 31042)
 
-[node name="CheeseEnemy43" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy43" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(25634, 31106)
 
-[node name="CheeseEnemy44" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy44" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(28737, 31232)
 
-[node name="CheeseEnemy45" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy45" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(31672, 31148)
 
-[node name="CheeseEnemy46" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy46" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(27935, 7669)
 
-[node name="CheeseEnemy47" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy47" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(29561, 8155)
 
-[node name="CheeseEnemy48" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy48" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(22150, 9190)
 
-[node name="CheeseEnemy49" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy49" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(21432, 10119)
 
-[node name="CheeseEnemy50" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy50" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(23670, 10076)
 
-[node name="CheeseEnemy51" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy51" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(26964, 10203)
 
-[node name="CheeseEnemy52" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy52" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(29350, 12103)
 
-[node name="CheeseEnemy53" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy53" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(22931, 14595)
 
-[node name="CheeseEnemy54" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy54" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(25845, 15608)
 
-[node name="CheeseEnemy55" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy55" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(22762, 18627)
 
-[node name="CheeseEnemy56" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy56" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(27745, 18606)
 
-[node name="CheeseEnemy57" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy57" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(20418, 21309)
 
-[node name="CheeseEnemy58" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy58" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(14148, 20211)
 
-[node name="CheeseEnemy59" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy59" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(12712, 18691)
 
-[node name="CheeseEnemy60" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy60" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(12860, 15861)
 
-[node name="CheeseEnemy61" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy61" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(14000, 12631)
 
-[node name="CheeseEnemy62" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy62" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(12037, 21330)
 
-[node name="CheeseEnemy63" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy63" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(9925, 21330)
 
-[node name="CheeseEnemy64" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy64" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(7825, 21232)
 
-[node name="CheeseEnemy65" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy65" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(6863, 18522)
 
-[node name="CheeseEnemy66" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy66" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(3591, 18670)
 
-[node name="CheeseEnemy67" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy67" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(1923, 20148)
 
-[node name="CheeseEnemy68" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy68" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(4731, 20274)
 
-[node name="CheeseEnemy69" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy69" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(5913, 21330)
 
-[node name="CheeseEnemy70" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy70" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(9904, 17276)
 
-[node name="CheeseEnemy71" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy71" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(6019, 16094)
 
-[node name="CheeseEnemy72" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy72" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(1881, 14046)
 
-[node name="CheeseEnemy73" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy73" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(5765, 14215)
 
-[node name="CheeseEnemy74" parent="." instance=ExtResource("7_272bh")]
+[node name="CheeseEnemy74" parent="Cheese Enemies" instance=ExtResource("7_272bh")]
 position = Vector2(13403, 8096)
 
 [connection signal="pressed" from="UI/Pause/PausePanel/VBoxContainer/ResumeButton" to="UI/Pause" method="_on_resume_button_pressed"]

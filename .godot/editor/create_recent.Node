@@ -1,3 +1,4 @@
+Node
 Control
 CRT
 AudioStreamPlayer
@@ -10,5 +11,4 @@ CPUParticles2D
 Camera2D
 CharacterBody2D
 RayCast2D
-Node
 Button

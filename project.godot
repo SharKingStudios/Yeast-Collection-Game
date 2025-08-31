@@ -14,6 +14,8 @@ config/name="Yeast Collection Game"
 config/version="1.0"
 run/main_scene="uid://c0hgbl7g335cs"
 config/features=PackedStringArray("4.4", "Mobile")
+boot_splash/image="uid://lb4cnw5qxim4"
+config/icon="uid://b8u0y8teu68pc"
 
 [autoload]
 
@@ -23,6 +25,8 @@ SoundController="*res://sound_controller.gd"
 
 [display]
 
+window/size/mode=3
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
 
